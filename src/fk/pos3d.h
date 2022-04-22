@@ -6,20 +6,24 @@
 namespace fk {
     struct Pos3d {
     public:
-        double x;
-        double y;
-        double z;
+        float x;
+        float y;
+        float z;
 
-        double *to_array() {
-            return new double[3]{x, y, z};
+        float *to_array() {
+            return new float[3]{x, y, z};
         }
 
-        double distance(Pos3d p) {
+        float distance(Pos3d p) {
             return sqrt(pow(p.x - x, 2) + pow(p.y - y, 2) + pow(p.z - z, 2));
         }
 
         Pos3d diff(Pos3d p) const {
             return {p.x - x, p.y - y, p.z - z};
+        }
+
+        void print() {
+            printf("(%f,%f,%f)\n", x,y,z);
         }
     };
 

@@ -12,13 +12,14 @@ namespace fk {
     protected:
 
         double theta;
+        double theta_base;
         DHParams dh;
         Matrix *matrix = nullptr;
 
     public:
-        Link() : theta(0), dh({0.0, 0.0, 0.0}) {}
+        Link() : theta(0), theta_base(0), dh({0.0, 0.0, 0.0}) {}
 
-        Link(double theta, DHParams dh) : theta(theta), dh(dh) {
+        Link(double theta_base, DHParams dh) : theta_base(theta_base), theta(theta_base), dh(dh) {
             fillMatrix();
         }
 
@@ -28,6 +29,10 @@ namespace fk {
 
         Matrix *getMatrix() {
             return matrix;
+        }
+
+        float getThetaBase() const {
+            return theta_base;
         }
 
         float getTheta() const {
